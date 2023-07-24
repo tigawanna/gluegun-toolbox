@@ -52,9 +52,7 @@ function muted(message: string): void {
   console.log(kleur.bgCyan(message));
 }
 
-function spin(config?: string | object): any {
-  return require("ora")(config || "").start();
-}
+
 
 const checkmark = kleur.green("✔︎");
 const xmark = kleur.red("ⅹ");

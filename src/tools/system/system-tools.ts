@@ -1,6 +1,7 @@
 import { GluegunSystem } from "./system-types.ts";
 import { head, tail, isNil } from "@/utils.js";
 import { execa, Options as ExecaOptions} from 'execa';
+import kleur from "kleur";
 
 export interface Options {
   [key: string]: any;
@@ -18,7 +19,7 @@ export interface Options {
 export async function run(command: string, args?: readonly string[] | undefined, options?: ExecaOptions<string> | undefined) {
   try {
     const res = await execa(command, args, options)
-    console.log(res?.command)
+    console.log(kleur.green(res?.command))
     console.log(res?.stdout)
     return res
   } catch (error) {

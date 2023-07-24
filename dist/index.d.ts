@@ -1,5 +1,24 @@
 import { Options, ExecaReturnValue } from 'execa';
 
+declare function loader<T>(promise: Promise<T>, title?: string): Promise<T>;
+
+interface GluegunPrint {
+    checkmark: string;
+    xmark: string;
+    info: (message: any) => void;
+    warning: (message: any) => void;
+    success: (message: any) => void;
+    highlight: (message: any) => void;
+    muted: (message: any) => void;
+    error: (message: any) => void;
+    debug: (value: any, title?: string) => void;
+    fancy: (value: string) => void;
+    divider: () => void;
+    newline: () => void;
+}
+
+declare const print: GluegunPrint;
+
 interface GluegunStrings {
     /**
      * Returns itself.
@@ -140,4 +159,4 @@ type GluegunTimer = () => number;
 
 declare const system: GluegunSystem;
 
-export { GluegunStrings, GluegunSystem, strings, system };
+export { GluegunPrint, GluegunStrings, GluegunSystem, loader, print, strings, system };
