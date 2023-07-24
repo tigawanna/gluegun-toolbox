@@ -1,4 +1,5 @@
 import { tryCatchWrapper } from "./tools/async/try-catch.ts";
+import { frameworkType,IFrameworkType,checkFramework } from "./tools/framework/whatFramework.ts";
 import {
   appendFileAsync,
   deleteFileAsync,
@@ -26,4 +27,7 @@ export {
   fileExists,
   readFileAsync,
   writeFileAsync,
+  checkFramework,
+  frameworkType,
+  IFrameworkType
 };

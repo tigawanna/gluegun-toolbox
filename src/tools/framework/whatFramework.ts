@@ -1,9 +1,9 @@
 import kleur from "kleur";
-import { tryCatchWrapper } from "../async/try-catch.ts";
+
 import { readFileAsync } from "../fs/crud-files.ts";
 import { IPackageJson, TPkgType } from "./framework-tool-types.ts";
-export type FrameworkType = Partial<TPkgType>;
-export function frameworkType(pkg: IPackageJson): FrameworkType {
+export type IFrameworkType = Partial<TPkgType>;
+export function frameworkType(pkg: IPackageJson): IFrameworkType {
   if (pkg.devDependencies?.rakkasjs) {
     return "Rakkasjs"
   } else if (pkg.dependencies?.next) {
@@ -17,13 +17,15 @@ export function frameworkType(pkg: IPackageJson): FrameworkType {
 }
 
 export async function checkFramework(){
-return tryCatchWrapper(async()=>{
+try {
     const pkg_json = await readFileAsync("./package.json");
-    if(pkg_json){
-      const framework = frameworkType(JSON.parse(pkg_json))
-      console.log(kleur.green(framework+" detected"))
-      return framework
+    if (pkg_json) {
+        const framework = frameworkType(JSON.parse(pkg_json))
+        console.log(kleur.green(framework + " detected"))
+        return framework
     }
-
-})
+    throw new Error("package.json not found")
+} catch (error) {
+    throw error
+}
 } 
