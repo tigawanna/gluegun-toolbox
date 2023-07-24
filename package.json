@@ -2,11 +2,8 @@
   "name": "gluegun-toolbox",
   "version": "1.0.0",
   "description": "",
- 
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-
-
   "type": "module",
   "scripts": {
     "start": "node ./dist/index.cjs",
@@ -22,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@topcli/spinner": "^2.1.1",
     "cosmiconfig": "7.0.1",
     "execa": "^7.1.1",
     "kleur": "^4.1.5",
