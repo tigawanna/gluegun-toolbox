@@ -6,7 +6,7 @@ import {
   readFileAsync,
   writeFileAsync,
 } from "./tools/fs/crud-files.ts";
-import { loader } from "./tools/loaders/loader-tools.ts";
+import { loader,asyncLoader } from "./tools/loaders/loader-tools.ts";
 import { print, GluegunPrint } from "./tools/print/print-tools.ts";
 import { strings, GluegunStrings } from "./tools/strings/string-tools.ts";
 import { system, GluegunSystem } from "./tools/system/system-tools.ts";
@@ -16,6 +16,7 @@ export {
   GluegunSystem,
   strings,
   GluegunStrings,
+  asyncLoader,
   loader,
   print,
   GluegunPrint,

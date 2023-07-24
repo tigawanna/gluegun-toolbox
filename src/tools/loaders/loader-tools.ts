@@ -1,7 +1,7 @@
 import { Spinner } from "@topcli/spinner";
 import kleur from "kleur";
 
-export async function loader<T>(promise: Promise<T>,title?:string): Promise<T> {
+export async function asyncLoader<T>(promise: Promise<T>,title?:string): Promise<T> {
     const spinner = new Spinner().start("Start working!");
     spinner.text = title ? title +" running...":"task running..."
     try {
@@ -13,4 +13,8 @@ export async function loader<T>(promise: Promise<T>,title?:string): Promise<T> {
         console.log(kleur.red(error.messge))
     throw error;
     }
+}
+
+export async function loader(title:string){
+    return new Spinner().start(title);
 }
